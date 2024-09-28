@@ -29,6 +29,7 @@ class Taxpayer():
             self.taxSlab = self.OLD_TAX_SLABS
         else:
             self.taxSlab = self.NEW_TAX_SLABS
+        return self.taxSlab
     
     def computeTax(self):
         self.getTaxSlab()
