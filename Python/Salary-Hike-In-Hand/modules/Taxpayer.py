@@ -1,9 +1,3 @@
-def classValidator(func):
-    def wrapper(*args):
-        
-        return func(*args)
-    return wrapper
-
 class Taxpayer():
     OLD_TAX_SLABS = [
         (0,250000,0.00),
@@ -24,7 +18,7 @@ class Taxpayer():
     CESS = 0.04
 
     def __init__(self,name,regime,income) -> None:
-        self.validateInit(name,regime)
+        self.validateInit(name,regime,income)
 
         self.name = name
         self.regime = regime
@@ -35,13 +29,14 @@ class Taxpayer():
             self.taxSlab = self.OLD_TAX_SLABS
         else:
             self.taxSlab = self.NEW_TAX_SLABS
-        print(self.taxSlab)
     
     def computeTax(self):
+        self.getTaxSlab()
         self.grossTax = self.computeGrossTax(self.income,self.taxSlab)
         self.cessAmount = self.computeCessAmount(self.grossTax,self.CESS)
         self.netTax = self.grossTax + self.cessAmount
-
+        return self.netTax
+    
     @staticmethod
     def computeGrossTax(income,taxSlab):
         grossTax = 0
@@ -65,20 +60,26 @@ class Taxpayer():
         return grossTax*cess
 
     @staticmethod
-    def validateInit(name,regime):
+    def validateInit(name,regime,income):
         if(type(name) is not str):
             raise TypeError("Name should be string")
         if(type(regime) is not str):
             raise TypeError("Regime should be string")
+        if(type(income) is int or type(income) is float):
+            pass
+        else:
+            raise Exception(f"Expected integer or float for income. Received: {income}")
+        
+        if(income < 0):
+            raise Exception(f"Expected income greater than 0. Received: {income}")
         
         if(regime.lower() == "old" or regime.lower() == "new"):
             pass
         else:
-            raise Exception("Regime can either be 'new' or 'old'")
+            raise Exception(f"Expected 'new' or 'old' for regime. Received: {regime}")
     
 
 
 if __name__ == "__main__":
     t1 = Taxpayer("User1","new",500000)
-    t1.getTaxSlab()
-    t1.computeTax()
+    print(t1.computeTax())
