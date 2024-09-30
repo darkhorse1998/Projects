@@ -12,14 +12,16 @@ def salaryHikeAnalysis(name,regime,currentIncome,hikedIncome):
     sh1 = SalaryHike(name,regime,currentIncome,hikedIncome)
     # taxOnCurrentIncome,taxOnHikedIncome,netCurrentIncome,netHikedIncome,diffInIncome,percentageDiffIncome
     parameters = sh1.analyzeHikedIncome()
-    print(f"Taxpayer details:\nName: {name}\nRegime: {regime}\nCurrent Income: {currentIncome}\nHiked Income: {hikedIncome}")
+    print(f"Taxpayer details:\nName: {name}{'|':>17} Regime: {regime}\nCurrent Income: {currentIncome} | Hiked Income: {hikedIncome}")
     print(f"Tax on current income: {parameters[0]}\nTax on hiked income: {parameters[1]}")
     print(f"Post Tax current income: {parameters[2]}\nPost tax hiked income: {parameters[3]}")
     print(f"Increase in income(in value): {parameters[4]}\nIncrease in income(in percentage): {parameters[5]:.2f}")
 
 if __name__ == "__main__":
     while True:
-        operation = input("\nEnter operation:\n1. Salary Hike Analysis\n2. Individual Income Tax Calculation\n")
+        operation = input("\nEnter operation:\n"+
+                          "1. Salary Hike Analysis\n"+
+                          "2. Individual Income Tax Calculation\n")
         if(operation.lower() == "q"):
             break
         name = input("Enter name: ")
