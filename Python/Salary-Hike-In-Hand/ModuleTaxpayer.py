@@ -1,18 +1,20 @@
 class Taxpayer():
     OLD_TAX_SLABS = [
-        (0,250000,0.00),
+        50000,
+        [(0,250000,0.00),
         (250000,500000,0.05),
         (500000,1000000,0.20),
-        (1000000,float("inf"),0.30)
+        (1000000,float("inf"),0.30)]
     ]
 
     NEW_TAX_SLABS = [
-        (0,300000,0.00),
+        75000,
+        [(0,300000,0.00),
         (300000,600000,0.05),
         (600000,900000,0.10),
         (900000,1200000,0.15),
         (1200000,1500000,0.20),
-        (1500000,float("inf"),0.30)
+        (1500000,float("inf"),0.30)]
     ]
 
     CESS = 0.04
@@ -41,7 +43,8 @@ class Taxpayer():
     @staticmethod
     def computeGrossTax(income,taxSlab):
         grossTax = 0
-        for item in taxSlab:
+        income = income - taxSlab[0]
+        for item in taxSlab[1]:
             lowerLimit = item[0]
             upperLimit = item[1]
             taxPercentage = item[2]
@@ -82,5 +85,5 @@ class Taxpayer():
 
 
 if __name__ == "__main__":
-    t1 = Taxpayer("User1","new",500000)
+    t1 = Taxpayer("User1","new",1250000)
     print(t1.computeTax())

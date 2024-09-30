@@ -6,7 +6,7 @@ from ModuleIncomeHike import SalaryHike
 def initiateSingleTaxpayer(name,regime,income):
     t1 = Taxpayer(name,regime,income)
     computedTax = t1.computeTax()
-    print(f"Taxpayer details:\nName: {name}\nRegime: {regime}\nIncome(post deductions): {income}\nNet Tax: {computedTax}")
+    print(f"Taxpayer details:\nName: {name}\nRegime: {regime}\nIncome: {income}\nNet Tax: {computedTax}")
 
 def salaryHikeAnalysis(name,regime,currentIncome,hikedIncome):
     sh1 = SalaryHike(name,regime,currentIncome,hikedIncome)
@@ -28,8 +28,8 @@ if __name__ == "__main__":
         regime = input("Enter regime (new/old): ")
 
         if (operation == "1"):
-            currentIncome = int(input("Enter current income (integer) after all deductons: "))
-            hikedIncome = int(input("Enter hiked income (integer) after all deductons: "))
+            currentIncome = int(input("Enter current income (integer) after all deductons except Standard Deductions: "))
+            hikedIncome = int(input("Enter hiked income (integer) after all deductons except Standard Deductions: "))
             salaryHikeAnalysis(name,regime,currentIncome,hikedIncome)
         elif (operation == "2"):
             income = int(input("Enter income (integer) after all deductions: "))
