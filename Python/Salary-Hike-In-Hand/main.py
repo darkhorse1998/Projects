@@ -12,7 +12,7 @@ def salaryHikeAnalysis(name,regime,currentIncome,hikedIncome):
     sh1 = SalaryHike(name,regime,currentIncome,hikedIncome)
     # taxOnCurrentIncome,taxOnHikedIncome,netCurrentIncome,netHikedIncome,diffInIncome,percentageDiffIncome
     parameters = sh1.analyzeHikedIncome()
-    print(f"Taxpayer details:\nName: {name}{'|':>18} Regime: {regime}\nCurrent Income: {currentIncome} | Hiked Income: {hikedIncome}")
+    print(f"Taxpayer details:\nName: {name}{'|':>19} Regime: {regime}\nCurrent Income: {currentIncome} | Hiked Income: {hikedIncome}")
     print(f"Tax on current income: {parameters[0]}\nTax on hiked income: {parameters[1]}")
     print(f"Post Tax current income: {parameters[2]}\nPost tax hiked income: {parameters[3]}")
     print(f"Increase in income(in value): {parameters[4]}\nIncrease in income(in percentage): {parameters[5]:.2f}")
