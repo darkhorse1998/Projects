@@ -38,11 +38,11 @@ if __name__ == "__main__":
                           "1. Salary Hike Analysis\n"+
                           "2. Individual Income Tax Calculation\n"+
                           "3. Job Switch Analysis\n")
-        if(operation.lower() == "q"):
-            break
-        if(operation not in ["1","2","3"]):
+        if(operation not in ["q","Q","1","2","3"]):
             print("Invalid operation! Please try again...")
             continue
+        if(operation.lower() == "q"):
+            break
         name = input("Enter name: ")
         regime = input("Enter regime (new/old): ")
 
