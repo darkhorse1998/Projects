@@ -8,16 +8,15 @@ import math
 def initiateSingleTaxpayer(name,regime,income):
     t1 = Taxpayer(name,regime,income)
     computedTax = t1.computeTax()
-    print(f"\nTaxpayer details:\nName: {name}\nRegime: {regime}\nIncome: {income}\nNet Tax: {computedTax}")
+    print(f"\nTaxpayer details:\nName: {name}\nRegime: {regime}\nIncome: {income}\nNet Tax: INR {computedTax}")
 
 def salaryHikeAnalysis(name,regime,currentIncome,hikedIncome):
     sh1 = SalaryHike(name,regime,currentIncome,hikedIncome)
-    # taxOnCurrentIncome,taxOnHikedIncome,netCurrentIncome,netHikedIncome,diffInIncome,percentageDiffIncome
     parameters = sh1.analyzeHikedIncome()
     print(f"\nTaxpayer details:\nName: {name}{'|':>19} Regime: {regime}\nCurrent Income: {currentIncome} | Hiked Income: {hikedIncome}")
-    print(f"Tax on current income: {parameters[0]}\nTax on hiked income: {parameters[1]}")
-    print(f"Post Tax current income: {parameters[2]}\nPost tax hiked income: {parameters[3]}")
-    print(f"Increase in income(in value): {parameters[4]}\nIncrease in income(in percentage): {parameters[5]:.2f}")
+    print(f"Tax on current income: INR {parameters[0]}\nTax on hiked income: INR {parameters[1]}")
+    print(f"Post Tax current income: INR {parameters[2]}\nPost tax hiked income: INR {parameters[3]}")
+    print(f"Increase in income(in value): INR {parameters[4]}\nIncrease in income(in percentage): {parameters[5]:.2f}%")
 
 def newJobAnalysis(name,regime,oldCtc,newCtc):
     ctc1 = CTC(name,regime,oldCtc)
@@ -28,9 +27,9 @@ def newJobAnalysis(name,regime,oldCtc,newCtc):
     increaseInTotalSalary = increaseInMonthlySalary*12
     percentageIncreaseInSalary = ((newEstimatedMonthlySalary/oldEstimatedMonthlySalary)-1)*100
     print(f"\nTaxpayer details:\nName: {name} | Regime: {regime}")
-    print(f"Current Estimated Monthly Salary: {math.floor(oldEstimatedMonthlySalary)} | New Estimated Monthly Salary: {math.floor(newEstimatedMonthlySalary)}")
-    print(f"Increase in Total Salary: {math.floor(increaseInTotalSalary)} | Increase in Monthly Salary: {math.floor(increaseInMonthlySalary)}")
-    print(f"Percentage Increase in Salary: {percentageIncreaseInSalary:.2f}")
+    print(f"Current Estimated Monthly Salary: INR {math.floor(oldEstimatedMonthlySalary)} | New Estimated Monthly Salary: INR {math.floor(newEstimatedMonthlySalary)}")
+    print(f"Increase in Total Salary: INR {math.floor(increaseInTotalSalary)} | Increase in Monthly Salary: INR {math.floor(increaseInMonthlySalary)}")
+    print(f"Percentage Increase in Salary: {percentageIncreaseInSalary:.2f}%")
 
 if __name__ == "__main__":
     while True:
@@ -38,7 +37,8 @@ if __name__ == "__main__":
                           "1. Salary Hike Analysis\n"+
                           "2. Individual Income Tax Calculation\n"+
                           "3. Job Switch Analysis\n")
-        if(operation not in ["q","Q","1","2","3"]):
+        validOperations = ["q","Q"]+[str(x) for x in range(1,4)]
+        if(operation not in validOperations):
             print("Invalid operation! Please try again...")
             continue
         if(operation.lower() == "q"):
