@@ -2,7 +2,7 @@ from ModuleTaxpayer import Taxpayer
 from ModuleValidators import classValidator
 from ModuleIncomeHike import SalaryHike
 from ModuleCtc import CTC
-import math
+from tabulate import tabulate
 
 @classValidator
 def initiateSingleTaxpayer(name,regime,income):
@@ -26,10 +26,13 @@ def newJobAnalysis(name,regime,oldCtc,newCtc):
     increaseInMonthlySalary = newEstimatedMonthlySalary-oldEstimatedMonthlySalary
     increaseInTotalSalary = increaseInMonthlySalary*12
     percentageIncreaseInSalary = ((newEstimatedMonthlySalary/oldEstimatedMonthlySalary)-1)*100
-    print(f"\nTaxpayer details:\nName: {name} | Regime: {regime}")
-    print(f"Current Estimated Monthly Salary: INR {math.floor(oldEstimatedMonthlySalary)} | New Estimated Monthly Salary: INR {math.floor(newEstimatedMonthlySalary)}")
-    print(f"Increase in Total Salary: INR {math.floor(increaseInTotalSalary)} | Increase in Monthly Salary: INR {math.floor(increaseInMonthlySalary)}")
-    print(f"Percentage Increase in Salary: {percentageIncreaseInSalary:.2f}%")
+    output = [
+        ["Name:",name,"Regime:",regime],
+        ["Current Estimated Monthly Salary:",f"INR {oldEstimatedMonthlySalary:.2f}","New Estimated Monthly Salary:",f"INR {newEstimatedMonthlySalary:.2f}"],
+        ["Increase in Total Salary:",f"INR {increaseInTotalSalary:.2f}","Increase in Monthly Salary:",f"INR {increaseInMonthlySalary:.2f}"],
+        ["Percentage Increase in Salary:",f"INR {percentageIncreaseInSalary:.2f}%"]
+    ]
+    print(tabulate(output))
 
 if __name__ == "__main__":
     while True:
