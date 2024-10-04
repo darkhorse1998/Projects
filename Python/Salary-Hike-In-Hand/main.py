@@ -29,6 +29,7 @@ def newJobAnalysis(name,regime,oldCtc,newCtc):
     output = [
         ["Name:",name,"Regime:",regime],
         ["Current Estimated Monthly Salary:",f"INR {oldEstimatedMonthlySalary:.2f}","New Estimated Monthly Salary:",f"INR {newEstimatedMonthlySalary:.2f}"],
+        ["Current TDS:",f"{oldTds:.2f}","New TDS:",f"{newTds:.2f}"],
         ["Increase in Total Salary:",f"INR {increaseInTotalSalary:.2f}","Increase in Monthly Salary:",f"INR {increaseInMonthlySalary:.2f}"],
         ["Percentage Increase in Salary:",f"INR {percentageIncreaseInSalary:.2f}%"]
     ]
