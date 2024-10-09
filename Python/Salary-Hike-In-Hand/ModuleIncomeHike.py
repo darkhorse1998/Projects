@@ -25,6 +25,6 @@ class SalaryHike(Taxpayer):
         return taxpayer.computeTax()
     
 if __name__ == "__main__":
-    sh1 = SalaryHike("Ram","new",1200000,2000000)
+    sh1 = SalaryHike("Ram","new",1250000,2000000)
     response = sh1.analyzeHikedIncome()
     print(response)
